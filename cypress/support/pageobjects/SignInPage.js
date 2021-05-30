@@ -1,4 +1,5 @@
 import {SIGNIN} from '../locators'
+require('cypress-xpath')
 
 class SignInPage{
     visit(){
@@ -32,6 +33,14 @@ class SignInPage{
     getPasswordValidationMessage(){
         return cy.get(SIGNIN.PASSWORD_VALIDATION)
     }
+
+    clickLoginButton(){
+        cy.get(SIGNIN.LOGIN_BTN)
+            .click()
+    }
+
+    getLoginValidationMessage(){
+        return cy.xpath(SIGNIN.LOGIN_VALIDATION)
+    }
 }
- 
 export default SignInPage

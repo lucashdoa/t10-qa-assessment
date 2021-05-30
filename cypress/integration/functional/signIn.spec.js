@@ -41,4 +41,14 @@ describe("Given Signin page is accessed", () => {
                 .should('have.text', expectedMessage)
         })
     })
+    context("When Login button is pressed but the credentials are invalid", () => {
+        it('CT-5: Should show the message "Email or password are incorrect. Try again"',  () => {
+            const expectedMessage = "Email or password are incorrect. Try again"
+            signinPage.typeEmail('lucas@mail.com')
+            signinPage.typePassword('1234567')
+            signinPage.clickLoginButton()
+            signinPage.getLoginValidationMessage()
+                .should('have.text', 'Email or password are incorrect. Try again.')
+        })
+    })
 })
